@@ -104,3 +104,10 @@ func TestLinkListReverse(t *testing.T) {
 
 	assert.Equal(t, []int{3, 2, 1}, head.Reverse().show())
 }
+
+func TestLinkListBack(t *testing.T) {
+	head := newTestDataLinkList123()
+
+	assert.Equal(t, head.Back(1), 3)
+	assert.Equal(t, head.Back(3), 1)
+}

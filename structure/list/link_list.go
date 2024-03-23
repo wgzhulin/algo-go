@@ -44,6 +44,21 @@ func (l *linkList) PopBack() int {
 	return l.Remove(l.size - 1)
 }
 
+// 回倒数第 n 个节点的值
+func (l *linkList) Back(n int) int {
+	fast, slow := l.Head, l.Head
+	for i := 0; i < n; i++ {
+		fast = fast.Next
+	}
+
+	for fast != nil {
+		fast = fast.Next
+		slow = slow.Next
+	}
+
+	return slow.Val
+}
+
 func (l *linkList) Remove(n int) int {
 	if l.size == 0 {
 		panic("no element")
@@ -98,11 +113,17 @@ func (l *linkList) ValueAtIndex(n int) int {
 }
 
 func (l *linkList) Reverse() *linkList {
-	head := l.Head.Next
-	l.Head.Next = nil
-	for node := head; node != nil; node = node.Next {
-		l.PushFront(node.Val)
+	cur := l.Head.Next
+	var pre *Node
+
+	for cur != nil {
+		next := cur.Next
+		cur.Next = pre
+
+		pre = cur
+		cur = next
 	}
+	l.Head.Next = pre
 	return l
 }
 
