@@ -44,7 +44,7 @@ func (l *linkList) PopBack() int {
 	return l.Remove(l.size - 1)
 }
 
-// 回倒数第 n 个节点的值
+// 倒数第 n 个节点的值
 func (l *linkList) Back(n int) int {
 	fast, slow := l.Head, l.Head
 	for i := 0; i < n; i++ {
