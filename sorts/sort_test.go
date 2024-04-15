@@ -1,9 +1,10 @@
 package sorting
 
 import (
-	"github.com/stretchr/testify/assert"
 	"strconv"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestSorts(t *testing.T) {
@@ -16,7 +17,7 @@ func TestSorts(t *testing.T) {
 	}
 
 	testFunc := []func([]int){
-		insert, selectSort, shell,
+		insert, selectSort, shell, quickSort,
 	}
 
 	for i, sort := range testFunc {
